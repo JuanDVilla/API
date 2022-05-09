@@ -16,7 +16,7 @@ class WebServiceToken
             $segundos_expira = 60000;
             $expire = $notBefore + $segundos_expira;
 
-          echo  $sql_verifica = "SELECT * FROM usuariosws WHERE Usuario = '$Usuario' and  Clave = '" . sha1($Clave) . "' and Activo = 1";
+            $sql_verifica = "SELECT * FROM usuariosws WHERE Usuario = '$Usuario' and  Clave = '" . sha1($Clave) . "' and Activo = 1";
             $qry_verifica = $dbo->query($sql_verifica);            
 
             if (mysqli_num_rows($qry_verifica) > 0) {
