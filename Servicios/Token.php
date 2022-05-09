@@ -9,6 +9,9 @@ $Clave = $_POST['Clave']; */
 /* $Usuario = "BolsaApi";
 $Clave = "B01sA4P1"; */
 
+echo "HOLA";
+exit;
+
 $dbo = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
 echo "HOLA";
 exit;
