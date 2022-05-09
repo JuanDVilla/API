@@ -3,13 +3,15 @@
 require_once('general.php');
 
 $Servicio = $_POST['Servicio'];
-$Token = $_POST['Token'];
+
+if(isset($_POST['Token']))
+    $Token = $_POST['Token'];
 
 
 if(!empty($Token)):
     $respuesta = WebServiceToken::valida_token($Token);
 
-    if(!$respuesta[success]):
+    if(!$respuesta['success']):
         die(json_encode(array('success' => $respuesta['success'], 'message' => $respuesta['message'], 'response' => $respuesta['response'], 'date' => $nowserver)));
         exit;
     endif;

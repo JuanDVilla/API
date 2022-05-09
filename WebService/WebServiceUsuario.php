@@ -12,11 +12,9 @@ class WebServiceUsuario
 
                 $SQLBusca = "SELECT * FROM Candidatos WHERE NumeroDocumento = '$NumeroDocumento'";
                 $QRYBusca = $dbo->query($SQLBusca);
-
-                if(mysqli_num_rows($QRYBusca) > 0):
-
-                    $datos = $QRYBusca->fetch_array(MYSQLI_ASSOC);
-
+                $datos = $QRYBusca->fetch_array(MYSQLI_ASSOC);
+                                
+                if(!empty($datos)):                    
                     // SI YA EXISTE SE ACTUALIZA
                     $SQLUpdate = "UPDATE Candidatos SET Nombre = '$Nombre', TipoDocumento = '$TipoDocumento', Correo = '$Correo' WHERE IDCandidatos = $datos[IDCandidatos]";
                     $dbo->query($SQLUpdate);
@@ -44,5 +42,7 @@ class WebServiceUsuario
             $respuesta["success"] = false;
             $respuesta["response"] = null;
         endif;
+
+        return $respuesta;
     }
 }
