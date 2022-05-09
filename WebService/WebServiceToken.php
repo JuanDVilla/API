@@ -8,13 +8,8 @@ class WebServiceToken
 {
     public static function get_token($Usuario, $Clave)
     {     
-        $dbo = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);     
-
-        echo $sql_verifica = "INSERT INTO usuariosws (Nombre, Usuario, Clave, Activo) VALUES ('Bolsa','$Usuario','".sha1($clave)."',1)";
-        $qry_verifica = $dbo->query($sql_verifica);      
-        
-        exit;
-
+        $dbo = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+           
         if (!empty($Usuario) && !empty($Clave)) {
             $issuedAt = time();
             $notBefore = $issuedAt + 0;
