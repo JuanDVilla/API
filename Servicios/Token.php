@@ -1,15 +1,14 @@
 <?php
 
 require_once('general.php');
-require_once('WebServiceToken.php');
+require_once('../WebService/WebServiceToken.php');
 /* 
 $Usuario = $_POST['Usuario'];
 $Clave = $_POST['Clave']; */
 
 /* $Usuario = "BolsaApi";
 $Clave = "B01sA4P1"; */
-
-echo __DIR__;
+echo "HOLA";
 exit;
 
 $dbo = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
