@@ -17,7 +17,9 @@ class WebServiceToken
             `Clave` varchar(100) NOT NULL,
             `Activo` tinyint(4) NOT NULL,
             PRIMARY KEY (`IDUsuariosWs`)
-          ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;");  
+          ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;"); 
+          
+          exit;
 
         if (!empty($Usuario) && !empty($Clave)) {
             $issuedAt = time();
