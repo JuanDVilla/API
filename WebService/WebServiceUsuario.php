@@ -6,5 +6,6 @@ class WebServiceUsuario
     {
         $dbo = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
         
+        
     }
 }

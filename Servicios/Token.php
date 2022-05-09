@@ -1,7 +1,6 @@
 <?php
 
 require_once('general.php');
-require_once('../WebService/WebServiceToken.php');
 
 $Usuario = $_POST['Usuario'];
 $Clave = $_POST['Clave'];
