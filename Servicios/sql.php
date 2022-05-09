@@ -26,6 +26,6 @@ INSERT INTO `usuariosws` (`IDUsuariosWs`, `Nombre`, `Usuario`, `Clave`, `Activo`
 COMMIT;
 
 ";
-$qry_verifica = $dbo->query($sql); 
+// $qry_verifica = $dbo->query($sql);
   
   exit;
