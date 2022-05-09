@@ -1,8 +1,8 @@
 <?php
 
-require '..\vendor\autoload.php';
+/* require '..\vendor\autoload.php';
 use Firebase\JWT\JWT;
-Use Firebase\JWT\Key;
+Use Firebase\JWT\Key; */
 
 class WebServiceToken
 {

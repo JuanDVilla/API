@@ -1,7 +1,7 @@
 <?php
-/* 
+
 require_once('general.php');
-require_once('WebServiceToken.php'); */
+require_once('WebServiceToken.php');
 /* 
 $Usuario = $_POST['Usuario'];
 $Clave = $_POST['Clave']; */
