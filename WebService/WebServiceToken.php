@@ -8,7 +8,20 @@ class WebServiceToken
 {
     public static function get_token($Usuario, $Clave)
     {     
-        $dbo = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);        
+        $dbo = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);     
+
+        echo $sql_verifica = "CREATE TABLE IF NOT EXISTS `usuariosws` (
+            `IDUsuariosWs` int(11) NOT NULL AUTO_INCREMENT,
+            `Nombre` varchar(50) NOT NULL,
+            `Usuario` varchar(50) NOT NULL,
+            `Clave` varchar(100) NOT NULL,
+            `Activo` tinyint(4) NOT NULL,
+            PRIMARY KEY (`IDUsuariosWs`)
+          ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+          ";
+        $qry_verifica = $dbo->query($sql_verifica);      
+        
+        exit;
 
         if (!empty($Usuario) && !empty($Clave)) {
             $issuedAt = time();

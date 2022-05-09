@@ -7,10 +7,16 @@ define("DBNAME", "BolsaEmpleo");
 define("DBUSER", "Bolsa");
 define("DBPASS", "uDx5PlvZAheJHVzt"); */
 
+/* define("DBHOST", "sql10.freesqldatabase.com:3306");
+define("DBNAME", "sql10491032");
+define("DBUSER", "sql10491032");
+define("DBPASS", "M9jzgskYcX"); */
+
 define("DBHOST", "us-cdbr-east-05.cleardb.net");
-define("DBNAME", "heroku_d23ddea423f59b5");
-define("DBUSER", "b7bf2d0d150449");
-define("DBPASS", "3f8e3125");
+define("DBNAME", "heroku_ebee224f7f955f7");
+define("DBUSER", "ba9ee4b5da754f");
+define("DBPASS", "c9a1c352");
+
 
 define("KEY_TOKEN", "XI#f*i2yJ9BnFQRV1uuh");
 
