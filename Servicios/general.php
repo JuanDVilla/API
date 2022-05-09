@@ -8,9 +8,9 @@ define("DBUSER", "Bolsa");
 define("DBPASS", "uDx5PlvZAheJHVzt"); */
 
 define("DBHOST", "us-cdbr-east-05.cleardb.net");
-define("DBNAME", "heroku_413bfd11a514660");
-define("DBUSER", "bc414c4ba1cb42");
-define("DBPASS", "e457e6fc");
+define("DBNAME", "heroku_d23ddea423f59b5");
+define("DBUSER", "b7bf2d0d150449");
+define("DBPASS", "3f8e3125");
 
 define("KEY_TOKEN", "XI#f*i2yJ9BnFQRV1uuh");
 
