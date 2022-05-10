@@ -98,6 +98,8 @@ class Req
             return "";
         endif;
     }
+
+    public static $TiposDocumento = array('CC','CE','PP','TI');
 }
 
 class WebServiceUsuario
@@ -110,28 +112,35 @@ class WebServiceUsuario
             // INSERTAMOS EL CANDIDATO EN LA BASE DE DATOS
             if(filter_var($Correo, FILTER_VALIDATE_EMAIL)):
 
-                $SQLBusca = "SELECT * FROM Candidatos WHERE NumeroDocumento = '$NumeroDocumento'";
-                $QRYBusca = $dbo->query($SQLBusca);
-                $datos = $QRYBusca->fetch_array(MYSQLI_ASSOC);
-                                
-                if(!empty($datos)):                    
-                    // SI YA EXISTE SE ACTUALIZA
-                    $SQLUpdate = "UPDATE Candidatos SET Nombre = '$Nombre', TipoDocumento = '$TipoDocumento', Correo = '$Correo' WHERE IDCandidatos = $datos[IDCandidatos]";
-                    $dbo->query($SQLUpdate);
+                $TipoDocumento = strtoupper($TipoDocumento);
+                if(in_array($TipoDocumento,Req::$TiposDocumento)):
 
-                    $mensaje = "DATOS ACTULIZADOS CON EXITO!";
+                    $SQLBusca = "SELECT * FROM Candidatos WHERE NumeroDocumento = '$NumeroDocumento'";
+                    $QRYBusca = $dbo->query($SQLBusca);
+                    $datos = $QRYBusca->fetch_array(MYSQLI_ASSOC);
+                                    
+                    if(!empty($datos)):                    
+                        // SI YA EXISTE SE ACTUALIZA
+                        $SQLUpdate = "UPDATE Candidatos SET Nombre = '$Nombre', TipoDocumento = '$TipoDocumento', Correo = '$Correo' WHERE IDCandidatos = $datos[IDCandidatos]";
+                        $dbo->query($SQLUpdate);
+
+                        $mensaje = "DATOS ACTULIZADOS CON EXITO!";
+                    else:
+
+                        $SQLInsert = "INSERT INTO Candidatos (Nombre, NumeroDocumento, TipoDocumento, Correo) VALUES ('$Nombre','$NumeroDocumento','$TipoDocumento','$Correo')";
+                        $dbo->query($SQLInsert);
+
+                        $mensaje = "CANDIDATO CREADO CON EXITO!";
+                    endif;  
+
+                    $respuesta["message"] = $mensaje;
+                    $respuesta["success"] = true;
+                    $respuesta["response"] = "";
                 else:
-
-                    $SQLInsert = "INSERT INTO Candidatos (Nombre, NumeroDocumento, TipoDocumento, Correo) VALUES ('$Nombre','$NumeroDocumento','$TipoDocumento','$Correo')";
-                    $dbo->query($SQLInsert);
-
-                    $mensaje = "CANDIDATO CREADO CON EXITO!";
-                endif;  
-
-                $respuesta["message"] = $mensaje;
-                $respuesta["success"] = true;
-                $respuesta["response"] = "";
-
+                    $respuesta["message"] = "Ingrese un tipo de documento valido como: " . json_encode(Req::$TiposDocumento);
+                    $respuesta["success"] = false;
+                    $respuesta["response"] = null;
+                endif;
             else:
                 $respuesta["message"] = "Por favor ingrese un correo electronico valido";
                 $respuesta["success"] = false;
@@ -271,4 +280,5 @@ class WebServiceOfertas
         return $respuesta;
     }
 }
+
 
