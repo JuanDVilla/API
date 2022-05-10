@@ -26,3 +26,4 @@ $nowserver = date('Y-m-d H:i:s');
 
 require_once('../WebService/WebServiceToken.php');
 require_once('../WebService/WebServiceUsuario.php');
+require_once('../WebService/WebServiceOfertas.php');

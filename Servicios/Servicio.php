@@ -15,6 +15,9 @@ if(!empty($Token)):
         die(json_encode(array('success' => $respuesta['success'], 'message' => $respuesta['message'], 'response' => $respuesta['response'], 'date' => $nowserver)));
         exit;
     endif;
+else:
+    die(json_encode(array('success' => false, 'message' => 'Falta Token', 'response' => '', 'date' => $nowserver)));
+    exit;
 endif;
 
 switch($Servicio):
@@ -42,6 +45,28 @@ switch($Servicio):
         exit;
     break;
     
+    case 'NuevaOferta':
+        $Nombre = $_POST['Nombre'];
+        $Estado = $_POST['Estado'];
+        $Candidatos = $_POST['Candidatos'];
+
+        $respuesta = WebServiceOfertas::NuevaOferta($Nombre, $Estado, $Candidatos);
+
+        die(json_encode(array('success' => $respuesta['success'], 'message' => $respuesta['message'], 'response' => $respuesta['response'], 'date' => $nowserver)));
+        exit;
+    break;
+
+    case 'ConsultaOferta':
+        $Nombre = $_POST['Nombre'];
+        $Estado = $_POST['Estado'];
+        $Candidatos = $_POST['Candidatos'];
+
+        $respuesta = WebServiceOfertas::NuevaOferta($Nombre, $Estado, $Candidatos);
+
+        die(json_encode(array('success' => $respuesta['success'], 'message' => $respuesta['message'], 'response' => $respuesta['response'], 'date' => $nowserver)));
+        exit;
+    break;
+
 endswitch;
 
 

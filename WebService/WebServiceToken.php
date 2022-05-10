@@ -13,7 +13,7 @@ class WebServiceToken
         if (!empty($Usuario) && !empty($Clave)) {
             $issuedAt = time();
             $notBefore = $issuedAt + 0;
-            $segundos_expira = 60000;
+            $segundos_expira = 600;
             $expire = $notBefore + $segundos_expira;
 
             $sql_verifica = "SELECT * FROM usuariosws WHERE Usuario = '$Usuario' and  Clave = '" . sha1($Clave) . "' and Activo = 1";
