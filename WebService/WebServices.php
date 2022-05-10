@@ -52,7 +52,7 @@ class WebServiceToken
             }
 
         } else {
-            $respuesta["message"] = "Atencion faltan parametros";
+            $respuesta["message"] = "Faltan parametros";
             $respuesta["success"] = false;
             $respuesta["response"] = null;
         }

@@ -9,8 +9,6 @@ if(empty($Servicio)):
     exit;
 endif;
 
-$Token = Req::Request('Token');
-
 if($Servicio == 'Token'):
     
     $Usuario = $_POST['Usuario'];
@@ -23,18 +21,17 @@ if($Servicio == 'Token'):
     
 endif;
 
+$Token = Req::Request('Token');
 
-if(!empty($Token)):
-    $respuesta = WebServiceToken::valida_token($Token);
+$respuesta = WebServiceToken::valida_token($Token);
 
-    if(!$respuesta['success']):
-        die(json_encode(array('success' => $respuesta['success'], 'message' => $respuesta['message'], 'response' => $respuesta['response'], 'date' => $nowserver)));
-        exit;
-    endif;
-else:
-    die(json_encode(array('success' => false, 'message' => 'Falta Token', 'response' => '', 'date' => $nowserver)));
+if(!$respuesta['success']):
+    die(json_encode(array('success' => $respuesta['success'], 'message' => $respuesta['message'], 'response' => $respuesta['response'], 'date' => $nowserver)));
     exit;
 endif;
+
+
+
 
 switch($Servicio):    
     
