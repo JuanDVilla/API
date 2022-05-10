@@ -8,6 +8,7 @@ if(empty($Servicio)):
     die(json_encode(array('success' => false, 'message' => "No se especifico servicio", 'response' => "", 'date' => $nowserver)));
     exit;
 endif;
+
 $Token = Req::Request('Token');
 
 if($Servicio == 'Token'):
