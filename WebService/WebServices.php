@@ -18,7 +18,7 @@ class WebServiceToken
             $sql_verifica = "SELECT * FROM usuariosws WHERE Usuario = '$Usuario' and  Clave = '" . sha1($Clave) . "' and Activo = 1";
             $qry_verifica = $dbo->query($sql_verifica);            
 
-            if (mysqli_num_rows($qry_verifica) > 0) {
+            if(mysqli_num_rows($qry_verifica) > 0) {
 
                 $response = array();
                 $datos_usuario = $qry_verifica->fetch_array(MYSQLI_ASSOC);
@@ -224,12 +224,49 @@ class WebServiceOfertas
         // CONSULTO LAS OFERTAS
 
         $SQLOfertas = "SELECT * FROM ofertas WHERE 1";
-        $QRYOfertas = $dbo->query($SQLOfertas);
+        $QRYOfertas = $dbo->query($SQLOfertas);  
+        if(mysqli_num_rows($QRYOfertas) > 0):
 
-        while($datos = $QRYOfertas->fetch_array(MYSQLI_ASSOC)):
+            $Mensaje ="Ofertas encontradas";
+            while($datos = $QRYOfertas->fetch_array(MYSQLI_ASSOC)):
 
-            
-        endwhile;
+                $InfoResponse['NombreOferta'] = $datos['Nombre'];
+                $InfoResponse['EstadoOferta'] = $datos['Estado'];
+    
+                $Candidatos = array();
+    
+                $SQLCandidatos = "SELECT * FROM candidatosofertas WHERE IDOfertas = $datos[IDOfertas]";
+                $QRYCandidatos = $dbo->query($SQLCandidatos);
+    
+                while($datos_candidatos = $QRYCandidatos->fetch_array(MYSQLI_ASSOC)):
+                    $SQLCandidato = "SELECT * FROM candidatos WHERE IDCandidatos = $datos_candidatos[IDCandidatos]";
+                    $QRYCandidato = $dbo->query($SQLCandidato);
+                    $Candidato = $QRYCandidato->fetch_array(MYSQLI_ASSOC);
+
+                    $InfoCandidatos['NombreCandidato'] = $Candidato['Nombre'];
+                    $InfoCandidatos['TipoDocumento'] = $Candidato['TipoDocumento'];
+                    $InfoCandidatos['NumeroDocumento'] = $Candidato['NumeroDocumento'];
+                    $InfoCandidatos['CorreoCandidato'] = $Candidato['Correo'];
+
+                    array_push($Candidatos,$InfoCandidatos);
+                endwhile;
+    
+                $InfoResponse['Candidatos'] = $Candidatos;
+    
+                array_push($response,$InfoResponse);
+                
+            endwhile;
+
+            $respuesta["message"] = $Mensaje;
+            $respuesta["success"] = true;
+            $respuesta["response"] = $response;
+
+        else:
+            $respuesta["message"] = "No hay ofertas actualmente";
+            $respuesta["success"] = false;
+            $respuesta["response"] = "";
+        endif;
+        
 
         return $respuesta;
     }
