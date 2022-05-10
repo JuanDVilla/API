@@ -175,6 +175,7 @@ class WebServiceOfertas
                         $SQLBuscar = "SELECT * FROM candidatos WHERE NumeroDocumento = '$Documento[NumeroDocumento]'";
                         $QRYBuscar = $dbo->query($SQLBuscar);
                         $datos = $QRYBuscar->fetch_array(MYSQLI_ASSOC);
+
                         if(empty($datos)):
                             $respuesta["message"] = "El candidato con numero docuemto $Documento[NumeroDocumento] no existe, ingrese uno valido";
                             $respuesta["success"] = false;
@@ -182,6 +183,16 @@ class WebServiceOfertas
                             
                             return $respuesta;
                         endif;
+
+                        if(in_array($Documento['NumeroDocumento'],$Documentos)):
+                            $respuesta["message"] = "Hay un numero repetido, por favor validar";
+                            $respuesta["success"] = false;
+                            $respuesta["response"] = "";
+                            
+                            return $respuesta;
+                        endif;
+
+                        $Documentos[]= $Documento['NumeroDocumento'];
                     endforeach;
 
                     $SQLInsert = "INSERT INTO ofertas (Nombre, Estado) VALUES ('$Nombre','$Estado')";
