@@ -4,9 +4,21 @@ require_once('general.php');
 
 $Servicio = $_POST['Servicio'];
 
+
+if($Servicio == 'token'):
+    
+    $Usuario = $_POST['Usuario'];
+    $Clave = $_POST['Clave'];
+
+    $respuesta = WebServiceToken::get_token($Usuario, $Clave);
+
+    die(json_encode(array('success' => $respuesta['success'], 'message' => $respuesta['message'], 'response' => $respuesta['response'], 'date' => $nowserver)));
+    exit;
+    
+endif;
+
 if(isset($_POST['Token']))
     $Token = $_POST['Token'];
-
 
 if(!empty($Token)):
     $respuesta = WebServiceToken::valida_token($Token);
@@ -20,17 +32,7 @@ else:
     exit;
 endif;
 
-switch($Servicio):
-
-    case 'token':
-        $Usuario = $_POST['Usuario'];
-        $Clave = $_POST['Clave'];
-    
-        $respuesta = WebServiceToken::get_token($Usuario, $Clave);
-    
-        die(json_encode(array('success' => $respuesta['success'], 'message' => $respuesta['message'], 'response' => $respuesta['response'], 'date' => $nowserver)));
-        exit;
-    break;
+switch($Servicio):    
     
     case 'CrearUsuario':
 
