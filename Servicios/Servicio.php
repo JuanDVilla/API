@@ -64,6 +64,13 @@ switch($Servicio):
         exit;
     break;
 
+    default:
+
+        die(json_encode(array('success' => false, 'message' => 'no existe el servicio ('.$Servicio.')', 'response' => "", 'date' => $nowserver)));
+        exit;
+        
+    break;
+
 endswitch;
 
 
