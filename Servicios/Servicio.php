@@ -56,12 +56,9 @@ switch($Servicio):
         exit;
     break;
 
-    case 'ConsultaOferta':
-        $Nombre = $_POST['Nombre'];
-        $Estado = $_POST['Estado'];
-        $Candidatos = $_POST['Candidatos'];
+    case 'ConsultaOferta':      
 
-        $respuesta = WebServiceOfertas::NuevaOferta($Nombre, $Estado, $Candidatos);
+        $respuesta = WebServiceOfertas::ConsultaOfertas();
 
         die(json_encode(array('success' => $respuesta['success'], 'message' => $respuesta['message'], 'response' => $respuesta['response'], 'date' => $nowserver)));
         exit;
