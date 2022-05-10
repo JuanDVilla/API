@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "35d42427-a657-481e-b1e8-a1da5ff573b4",
+		"name": "API Juan Diego Villa Montoya",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Usuario",
+							"value": "BolsaApi",
+							"type": "text"
+						},
+						{
+							"key": "Clave",
+							"value": "B01sA4P1",
+							"type": "text"
+						},
+						{
+							"key": "Servicio",
+							"value": "Token",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://apibolsaempleo.herokuapp.com/Servicios/Servicio.php",
+					"protocol": "https",
+					"host": [
+						"apibolsaempleo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Servicios",
+						"Servicio.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearUsuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Servicio",
+							"value": "CrearUsuario",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTIxNTU1MTIsIm5iZiI6MTY1MjE1NTUxMiwiZXhwIjoxNjUyMTU2MTEyLCJkYXRhIjp7IklEVXN1YXJpb1dTIjoiNCIsIk5vbWJyZSI6IkJvbHNhIiwiVXN1YXJpbyI6IkJvbHNhQXBpIn19.ykDMFCNxgYuml3xSBrNWnMn06JOEPl4opEsYbS8URZQ",
+							"type": "text"
+						},
+						{
+							"key": "Nombre",
+							"value": "Juan Diego Villa",
+							"type": "text"
+						},
+						{
+							"key": "NumeroDocumento",
+							"value": "1053863042",
+							"type": "text"
+						},
+						{
+							"key": "TipoDocumento",
+							"value": "CC",
+							"type": "text"
+						},
+						{
+							"key": "Correo",
+							"value": "juandvillamontoya@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://apibolsaempleo.herokuapp.com/Servicios/Servicio.php",
+					"protocol": "https",
+					"host": [
+						"apibolsaempleo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Servicios",
+						"Servicio.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NuevaOferta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Servicio",
+							"value": "NuevaOferta",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTIxNTYzODgsIm5iZiI6MTY1MjE1NjM4OCwiZXhwIjoxNjUyMTU5OTg4LCJkYXRhIjp7IklEVXN1YXJpb1dTIjoiNCIsIk5vbWJyZSI6IkJvbHNhIiwiVXN1YXJpbyI6IkJvbHNhQXBpIn19.MIIJRiTOuk4XclXDXDDUYXpWegwiP3sxiBvpZWSLJvU",
+							"type": "text"
+						},
+						{
+							"key": "Nombre",
+							"value": "Oferta general 2",
+							"type": "text"
+						},
+						{
+							"key": "Estado",
+							"value": "Activo",
+							"type": "text"
+						},
+						{
+							"key": "Candidatos",
+							"value": "[{\"NumeroDocumento\":\"43093328\"},{\"NumeroDocumento\":\"1053870754\"},{\"NumeroDocumento\":\"10538630\"},{\"NumeroDocumento\":\"1053863042\"}]",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://apibolsaempleo.herokuapp.com/Servicios/Servicio.php",
+					"protocol": "https",
+					"host": [
+						"apibolsaempleo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Servicios",
+						"Servicio.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaOferta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Servicio",
+							"value": "ConsultaOferta",
+							"type": "text"
+						},
+						{
+							"key": "Token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTIxMzU4OTAsIm5iZiI6MTY1MjEzNTg5MCwiZXhwIjoxNjUyMTk1ODkwLCJkYXRhIjp7IklEVXN1YXJpb1dTIjoiNCIsIk5vbWJyZSI6IkJvbHNhIiwiVXN1YXJpbyI6IkJvbHNhQXBpIn19.LhkQzfLhiJjTJX5dfEJE9A7GH7JnuGfOS495g0Aut40",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://apibolsaempleo.herokuapp.com/Servicios/Servicio.php",
+					"protocol": "https",
+					"host": [
+						"apibolsaempleo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"Servicios",
+						"Servicio.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
