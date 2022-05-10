@@ -162,6 +162,7 @@ class WebServiceOfertas
     public static function NuevaOferta($Nombre, $Estado, $Candidatos)
     {
         $dbo = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+        $Documentos = array();
 
         if(!empty($Nombre) && !empty($Estado) && !empty($Candidatos)):
 
