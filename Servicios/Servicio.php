@@ -3,9 +3,9 @@
 require_once('general.php');
 
 $Servicio = $_POST['Servicio'];
+$Token = Req::Request('Token');
 
-
-if($Servicio == 'token'):
+if($Servicio == 'Token'):
     
     $Usuario = $_POST['Usuario'];
     $Clave = $_POST['Clave'];
@@ -17,8 +17,6 @@ if($Servicio == 'token'):
     
 endif;
 
-if(isset($_POST['Token']))
-    $Token = $_POST['Token'];
 
 if(!empty($Token)):
     $respuesta = WebServiceToken::valida_token($Token);
@@ -36,10 +34,10 @@ switch($Servicio):
     
     case 'CrearUsuario':
 
-        $Correo = $_POST['Correo'];
-        $Nombre = $_POST['Nombre'];
-        $TipoDocumento = $_POST['TipoDocumento'];
-        $NumeroDocumento = $_POST['NumeroDocumento'];
+        $Correo = Req::Request('Correo');
+        $Nombre = Req::Request('Nombre');
+        $TipoDocumento = Req::Request('TipoDocumento');
+        $NumeroDocumento = Req::Request('NumeroDocumento');
 
         $respuesta = WebServiceUsuario::UsuarioNuevo($Nombre, $NumeroDocumento, $TipoDocumento, $Correo);
 
@@ -48,9 +46,9 @@ switch($Servicio):
     break;
     
     case 'NuevaOferta':
-        $Nombre = $_POST['Nombre'];
-        $Estado = $_POST['Estado'];
-        $Candidatos = $_POST['Candidatos'];
+        $Nombre = Req::Request('Nombre');
+        $Estado = Req::Request('Estado');
+        $Candidatos = Req::Request('Candidatos');
 
         $respuesta = WebServiceOfertas::NuevaOferta($Nombre, $Estado, $Candidatos);
 
